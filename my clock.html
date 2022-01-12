@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Clock by: K18SW06</title>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .my-clock {
+      width: 100%;
+      height: 100%;
+      padding-top: 200px;
+      padding-left: -20px;
+      background-color: "white";
+      font-family: sans-serif;
+      float: left;
+    }
+
+    #clock {
+      width: 280px;
+      height: 280px;
+      background-color: "white";
+      border: 15px solid #030D09;
+      border-radius: 50%;
+      margin: 20px auto;
+      position: relative;
+      box-shadow: inset 0 5px 25px #00000080,
+        0 5px 25px #00000080,
+        0 5px 30px #00000080,
+        0 5px 35px #00000080,
+        0 5px 35px #00000080,
+        0 5px 35px #00000080;
+
+    }
+
+    #clock::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      left: -18px;
+      top: -10px;
+      border: 18px solid #cccccc;
+      border-radius: 50%;
+      z-index: -2;
+    }
+
+    #clock::after {
+      content: "";
+      width: 18px;
+      height: 18px;
+      left: 18px;
+      top: 10px;
+      background: black;
+      position: absolute;
+      border-radius: 50%;
+      left: calc(50% - 9px);
+      top: calc(50% - 9px);
+      box-shadow: 0 2px 4px #00000026;
+    }
+
+    #clock li {
+      list-style: none;
+      position: absolute;
+    }
+
+    .num {
+      position: absolute;
+      width: 90%;
+      height: 90%;
+      padding: 5%;
+      text-align: center;
+    }
+
+    .num span {
+      display: block;
+      color: black;
+      font-size: 40px;
+      text-shadow: 0 5px 18px #00000026, 0 2px 3px #00000026;
+    }
+
+    .num:nth-child(1) {
+      transform: rotate(30deg);
+    }
+
+    .num:nth-child(1) span {
+      transform: rotate(-30deg);
+    }
+
+    .num:nth-child(2) {
+      transform: rotate(60deg);
+    }
+
+    .num:nth-child(2) span {
+      transform: rotate(-60deg);
+    }
+
+    .num:nth-child(3) {
+      transform: rotate(90deg);
+    }
+
+    .num:nth-child(3) span {
+      transform: rotate(-90deg);
+    }
+
+    .num:nth-child(4) {
+      transform: rotate(120deg);
+    }
+
+    .num:nth-child(4) span {
+      transform: rotate(-120deg);
+    }
+
+    .num:nth-child(5) {
+      transform: rotate(150deg);
+    }
+
+    .num:nth-child(5) span {
+      transform: rotate(-150deg);
+    }
+
+    .num:nth-child(6) {
+      transform: rotate(180deg);
+    }
+
+    .num:nth-child(6) span {
+      transform: rotate(-180deg);
+    }
+
+    .num:nth-child(7) {
+      transform: rotate(210deg);
+    }
+
+    .num:nth-child(7) span {
+      transform: rotate(-210deg);
+    }
+
+    .num:nth-child(8) {
+      transform: rotate(240deg);
+    }
+
+    .num:nth-child(8) span {
+      transform: rotate(-240deg);
+    }
+
+    .num:nth-child(9) {
+      transform: rotate(270deg);
+    }
+
+    .num:nth-child(9) span {
+      transform: rotate(-270deg);
+    }
+
+    .num:nth-child(10) {
+      transform: rotate(300deg);
+    }
+
+    .num:nth-child(10) span {
+      transform: rotate(-300deg);
+    }
+
+    .num:nth-child(11) {
+      transform: rotate(330deg);
+    }
+
+    .num:nth-child(11) span {
+      transform: rotate(-330deg);
+    }
+
+    #sec {
+      width: 100%;
+      height: 100%;
+      animation: sec 60s steps(60, end) infinite;
+      width: 1%;
+      height: 40%;
+      top: 9%;
+      left: 49.25%;
+      opacity: 0.8;
+    }
+
+    #min {
+      width: 100%;
+      height: 100%;
+      animation: sec 3600s step-end(60, end) infinite;
+      width: 1.6%;
+      height: 30%;
+      top: 19%;
+      left: 48.9%;
+      opacity: 0.8;
+    }
+
+    #hour {
+      width: 1.8%;
+      height: 25%;
+      top: 25%;
+      left: 48.85%;
+      opacity: 0.8;
+    }
+
+    @keyframes sec {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    #clockContainer {
+      position: relative;
+      margin: auto;
+      height: 40vw;
+      width: 40vw;
+      background: url(clock.png) no-repeat;
+      background-size: 100%;
+    }
+
+    #hour,
+    #min,
+    #sec {
+      position: absolute;
+      background: black;
+      border-radius: 10px;
+      transform-origin: bottom;
+    }
+  </style>
+
+  <script type="text/javascript">
+    setInterval(() => {
+      d = new Date();
+      htime = d.getHours();
+      mtime = d.getMinutes();
+      stime = d.getSeconds();
+      hrotation = 30 * htime + mtime / 2;
+      mrotation = 6 * mtime;
+      srotation = 6 * stime;
+
+      hour.style.transform = `rotate(${hrotation}deg)`;
+      min.style.transform = `rotate(${mrotation}deg)`;
+      sec.style.transform = `rotate(${srotation}deg)`;
+    }, 1000);
+  </script>
+</head>
+
+<body>
+  <div class="my-clock">
+    <ul id="clock">
+      <li class="num"><span>1</span></li>
+      <li class="num"><span>2</span></li>
+      <li class="num"><span>3</span></li>
+      <li class="num"><span>4</span></li>
+      <li class="num"><span>5</span></li>
+      <li class="num"><span>6</span></li>
+      <li class="num"><span>7</span></li>
+      <li class="num"><span>8</span></li>
+      <li class="num"><span>9</span></li>
+      <li class="num"><span>10</span></li>
+      <li class="num"><span>11</span></li>
+      <li class="num"><span>12</span></li>
+      <li id="hour"></li>
+      <li id="min"></li>
+      <li id="sec"></li>
+    </ul>
+  </div>
+</body>
+
+</html>
